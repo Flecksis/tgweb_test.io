@@ -50,6 +50,8 @@
         <h1>Rust clicker</h1>
         <div id="clickCount">Количество скрапа: 0</div>
         <div class="xsmall">говорят что-бы изучить всё нужно 15к скрапа</div>
+        <!-- Добавлен элемент audio для воспроизведения звука -->
+        <audio id="clickSound" src="click_sound.mp3"></audio>
         <img id="clickImage" src="click.png" alt="Кликни здесь!" width="200" height="200" onclick="incrementClick()">
         <div>
             <button id="wipeButton" onclick="buyWipe()">Вайп: <span id="wipeCostValue">10</span> Скрапа</button>
@@ -65,13 +67,15 @@
         function incrementClick() {
             clickCount += clickMultiplier;
             document.getElementById("clickCount").innerText = "Количество скрапа: " + clickCount;
+            // Воспроизводим звук при клике
+            document.getElementById("clickSound").play();
         }
 
         function buyWipe() {
             if (clickCount >= wipeCost) {
                 clickCount -= wipeCost;
                 clickMultiplier *= 2;
-                wipeCost *= 2;
+                wipeCost *= 3;
                 document.getElementById("clickCount").innerText = "Количество скрапа: " + clickCount;
                 document.getElementById("wipeCostValue").innerText = wipeCost;
                 alert("Вы купили вайп. Теперь ваш множитель кликов увеличен вдвое!");
