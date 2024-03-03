@@ -29,7 +29,7 @@
             font-size: 24px;
             margin-bottom: 20px;
         }
-        #clickButton {
+        #clickButton, #wipeButton {
             padding: 10px 20px;
             font-size: 18px;
             cursor: pointer;
@@ -38,8 +38,9 @@
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            margin-right: 10px;
         }
-        #clickButton:hover {
+        #clickButton:hover, #wipeButton:hover {
             background-color: #0056b3;
         }
     </style>
@@ -50,15 +51,34 @@
         <div id="clickCount">Количество скрапа: 0</div>
         <div class="xsmall">говорят что-бы изучить всё нужно 15к скрапа</div>
         <img id="clickImage" src="click.png" alt="Кликни здесь!" width="200" height="200" onclick="incrementClick()">
+        <div>
+            <button id="wipeButton" onclick="buyWipe()">Вайп: <span id="wipeCostValue">10</span> Скрапа</button>
+        </div>
         <div class="xsmall">by flecksis</div>
     </div>
 
     <script>
         let clickCount = 0;
+        let wipeCost = 10;
+        let clickMultiplier = 1;
 
         function incrementClick() {
-            clickCount++;
-            document.getElementById("clickCount").innerText = "Количество кликов: " + clickCount;
+            clickCount += clickMultiplier;
+            document.getElementById("clickCount").innerText = "Количество скрапа: " + clickCount;
+        }
+
+        function buyWipe() {
+            if (clickCount >= wipeCost) {
+                clickCount -= wipeCost;
+                clickMultiplier *= 2;
+                wipeCost *= 2;
+                document.getElementById("clickCount").innerText = "Количество скрапа: " + clickCount;
+                document.getElementById("wipeCostValue").innerText = wipeCost;
+                alert("Вы купили вайп. Теперь ваш множитель кликов увеличен вдвое!");
+            } else {
+                alert("У вас недостаточно скрапа для покупки вайпа.");
+            }
         }
     </script>
 </body>
+</html>
