@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-    <h1>Простой кликер</h1>
+    <h1>Flecksis_coin</h1>
     <div id="clickCount">Количество кликов: 0</div>
     <button id="clickButton" onclick="incrementClick()">Кликни здесь!</button>
 
