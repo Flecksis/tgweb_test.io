@@ -46,9 +46,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>Красивый кликер</h1>
-        <div id="clickCount">Количество кликов: 0</div>
+        <h1>Rust clicker</h1>
+        <div id="clickCount">Количество скрапа: 0</div>
+        <div class="xsmall">говорят что-бы изучить всё нужно 15к скрапа</div>
         <img id="clickImage" src="click.png" alt="Кликни здесь!" width="200" height="200" onclick="incrementClick()">
+        <div class="xsmall">by flecksis</div>
     </div>
 
     <script>
